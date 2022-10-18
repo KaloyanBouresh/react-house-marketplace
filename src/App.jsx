@@ -1,7 +1,8 @@
 function App() {
   return (
     <>
-      <h1>
+      <hr />
+      <h1 style={{ color: "red" }}>
         Hello
       </h1>
     </>
