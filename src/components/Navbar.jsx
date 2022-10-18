@@ -17,17 +17,17 @@ function Navbar() {
         <footer className='navbar'>
             <nav className='navbarNav'>
                 <ul className="navbarListItems">
-                    <li className="navbarlistItem" onClick={() => navigate('/')}>
+                    <li className="navbarListItem" onClick={() => navigate('/')}>
                         <ExploreIcon fill={pathMatchRoute('/') ? "#2c2c2c" : '#8f8f8f'} width='36px' height='36px' />
-                        <p>Explore</p>
+                        <p className={pathMatchRoute('/') ? "navbarListItemNameActive" : 'navbarListitemName'}>Explore</p>
                     </li>
-                    <li className="navbarlistItem" onClick={() => navigate('/offers')}>
+                    <li className="navbarListItem" onClick={() => navigate('/offers')}>
                         <OfferIcon fill={pathMatchRoute('/offers') ? "#2c2c2c" : '#8f8f8f'} width='36px' height='36px' />
-                        <p>Offer</p>
+                        <p className={pathMatchRoute('/offers') ? "navbarListItemNameActive" : 'navbarListitemName'}>Offer</p>
                     </li>
-                    <li className="navbarlistItem" onClick={() => navigate('/profile')}>
+                    <li className="navbarListItem" onClick={() => navigate('/profile')}>
                         <PersonOutlineIcon fill={pathMatchRoute('/profile') ? "#2c2c2c" : '#8f8f8f'} width='36px' height='36px' />
-                        <p>Profile</p>
+                        <p className={pathMatchRoute('/profile') ? "navbarListItemNameActive" : 'navbarListitemName'}>Profile</p>
                     </li>
                 </ul>
             </nav>
