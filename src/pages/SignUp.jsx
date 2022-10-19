@@ -7,6 +7,7 @@ import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { db } from '../firebase.config'
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
+import OAuth from '../components/OAuth';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -61,7 +62,7 @@ function SignUp() {
       <div className="pageContainer">
         <header>
           <p className="pageHeader">
-            Welcome Back!
+            Welcome!
           </p>
         </header>
 
@@ -110,7 +111,8 @@ function SignUp() {
               </button>
             </div>
           </form>
-          {/* Google OAuth */}
+          <OAuth />
+
           <Link to='/sign-in' className='registerLink'>
             Sign In Instead?
           </Link>
