@@ -62,10 +62,34 @@ function CreateListing() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(formData)
     }
 
     const onMutate = (e) => {
-        console.log('mutate')
+        let boolean = null;
+
+        if (e.target.value === 'true') {
+            boolean = true;
+        }
+
+        if (e.target.value === 'false') {
+            boolean = false;
+        }
+
+        // Files
+        if (e.target.files) {
+            setFormData((prevState) => ({
+                ...prevState,
+                images: e.target.files
+            }))
+        }
+        // Text/Booleans/Numbers
+        if (!e.target.files) {
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.id]: boolean ?? e.target.value
+            }))
+        }
     }
 
     if (loading) {
@@ -291,7 +315,8 @@ function CreateListing() {
                         multiple
                         required
                     />
-                    <button type='submit' className="primaryButton createListingButton">Create Listing</button>
+                    <button type='submit' className="primaryButton createListingButton"
+                        onClick={onSubmit}>Create Listing</button>
                 </form>
             </main>
         </div >
