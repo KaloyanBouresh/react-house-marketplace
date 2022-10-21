@@ -73,7 +73,7 @@ function CreateListing() {
     }
 
     return (
-        <div className="prifile">
+        <div className="profile">
             <header>
                 <p className="pageHeader">Create a Listing</p>
             </header>
