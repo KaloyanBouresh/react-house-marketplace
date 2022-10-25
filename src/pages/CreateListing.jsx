@@ -67,7 +67,7 @@ function CreateListing() {
     return () => {
       isMounted.current = false;
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
   const onSubmit = async (e) => {
@@ -170,9 +170,9 @@ function CreateListing() {
     };
 
     // Deleting unused objects if they are not needed for the current listing:
+    formDataCopy.location = address;
     delete formDataCopy.images;
     delete formDataCopy.address;
-    location && (formDataCopy.location = location);
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
