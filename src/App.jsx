@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
+import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 
@@ -27,6 +28,7 @@ function App() {
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route path="/create-listing" element={<CreateListing />}></Route>
+          <Route path="/edit-listing/:listingId" element={<EditListing />}></Route>
           <Route path="/category/:categoryName/:listingId" element={<Listing />}></Route>
           <Route path="/contact/:landlordId" element={<Contact />}></Route>
           <Route path="/" element={<Explore />}></Route>
