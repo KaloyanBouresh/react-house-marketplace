@@ -23,12 +23,11 @@ function Listing() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          console.log(docSnap.data());
           setListing(docSnap.data());
           setLoading(false);
         }
       } catch (error) {
-        toast.error("Something get wrong!\nTry again later!");
+        toast.error("Something went wrong!\nTry again later!");
         console.log(error);
       }
     };
@@ -98,7 +97,7 @@ function Listing() {
 
         {auth.currentUser?.uid !== listing.useRef && (
           <Link
-            to={`/contact/${ listing.useRef }?listingName=${ listing.name }&listingLocation=${ listing.location }`}
+            to={`/contact/${ listing.useRef }?listingName=${ listing.name }`}
             className='primaryButton'
           >
             Contact Landlord
