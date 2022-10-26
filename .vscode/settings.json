@@ -1,4 +1,6 @@
 {
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
-    "prettier.embeddedLanguageFormatting": "auto"
+    "prettier.embeddedLanguageFormatting": "off",
+    "eslint.format.enable": true,
+    "typescript.format.insertSpaceAfterTypeAssertion": true
 }
