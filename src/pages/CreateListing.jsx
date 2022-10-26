@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
-import { toast } from "react-toastify";
+import { useState, useEffect, useRef } from "react"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { useNavigate } from "react-router-dom"
+import Spinner from "../components/Spinner"
+import { toast } from "react-toastify"
 import {
   getStorage,
   ref,

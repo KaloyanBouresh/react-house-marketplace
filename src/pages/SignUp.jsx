@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
-import visibilityIcon from '../assets/svg/visibilityIcon.svg';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom'
+import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
+import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
-import OAuth from '../components/OAuth';
+import OAuth from '../components/OAuth'
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { db } from "../firebase.config";
-import Spinner from "../components/Spinner";
-import shareIcon from "../assets/svg/shareIcon.svg";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react"
+import { Link, useParams, useNavigate } from "react-router-dom"
+import { getDoc, doc } from "firebase/firestore"
+import { getAuth } from "firebase/auth"
+import { db } from "../firebase.config"
+import Spinner from "../components/Spinner"
+import shareIcon from "../assets/svg/shareIcon.svg"
+import { toast } from "react-toastify"
+import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet'
+import SwiperCore, { Navigation, Pagination, Scroolbar, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
 
 function Listing() {
   const [listing, setListing] = useState(null);
@@ -93,7 +97,23 @@ function Listing() {
         </ul>
         <p className="listingLocation">Location</p>
 
-        {/* MAP */}
+        <div className="leafletContainer">
+          <MapContainer
+            style={{ height: '100%', width: '100%' }}
+            center={[listing.latitude, listing.longitude]}
+            zoom={13}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
+            />
+
+            <Marker position={[listing.latitude, listing.longitude]}>
+              <Popup>{listing.location}</Popup>
+            </Marker>
+          </MapContainer>
+        </div>
 
         {auth.currentUser?.uid !== listing.useRef && (
           <Link
