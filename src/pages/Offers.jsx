@@ -10,6 +10,7 @@ function Offers() {
     const [listings, setListings] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // eslint-disable-next-line no-unused-vars
     const params = useParams();
 
     useEffect(() => {
