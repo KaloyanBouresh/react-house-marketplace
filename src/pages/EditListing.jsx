@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Spinner from "../components/Spinner"
 import { toast } from "react-toastify"
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, doc, updateDoc, serverTimestamp, collection, getDoc } from "firebase/firestore";
+import { doc, updateDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
 
@@ -50,6 +50,15 @@ function EditListing() {
     const params = useParams();
     const isMounted = useRef(true);
 
+    // Redirect if listing is not user's
+    useEffect(() => {
+        if (listing && listing.userRef !== auth.currentUser.uid) {
+            toast.error("You don't have permission to edit this listing");
+            navigate('/');
+        }
+    })
+
+    // Fetch listing to edit
     useEffect(() => {
         setLoading(true);
         const fetchListing = async () => {
@@ -71,6 +80,7 @@ function EditListing() {
         fetchListing();
     }, [params.listingId, navigate]);
 
+    // Sets UserRef to logged on user
     useEffect(() => {
         if (isMounted) {
             onAuthStateChanged(auth, (user) => {
@@ -81,7 +91,6 @@ function EditListing() {
                 }
             });
         }
-
         return () => {
             isMounted.current = false;
         };
@@ -90,7 +99,6 @@ function EditListing() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-
         setLoading(true);
 
         if (discountedPrice > +regularPrice) {
@@ -139,9 +147,7 @@ function EditListing() {
             return new Promise((resolve, reject) => {
                 const storage = getStorage();
                 const fileName = `${ auth.currentUser.uid }-${ image.name }-${ uuidv4() }`;
-
                 const storageRef = ref(storage, "images/" + fileName);
-
                 const uploadTask = uploadBytesResumable(storageRef, image);
 
                 uploadTask.on(
@@ -187,18 +193,18 @@ function EditListing() {
             timestamp: serverTimestamp(),
         };
 
-        // Deleting unused objects if they are not needed for the current listing:
+        // Deleting unused objects if they are not needed for the current listing
         formDataCopy.location = address;
         delete formDataCopy.images;
         delete formDataCopy.address;
         !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
-        const docRef = await addDoc(collection(db, "listings"), formDataCopy);
+        // Update listing
+        const docRef = doc(db, 'listings', params.listingId);
+        await updateDoc(docRef, formDataCopy);
 
         setLoading(false);
-
         toast.success("Listing saved! :)");
-
         navigate(`/category/${ formDataCopy.type }/${ docRef.id }`);
     };
 
