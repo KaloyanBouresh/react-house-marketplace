@@ -120,7 +120,7 @@ function Offers() {
                                 Load More
                             </p>
                         ) :
-                        <h3>That's all</h3>}
+                            <h3>That's all</h3>}
                     </>
                     :
                     <p>There are no current offers for you</p>

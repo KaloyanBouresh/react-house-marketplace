@@ -121,7 +121,6 @@ function Category() {
               ))}
             </ul>
           </main>
-
           <br />
           <br />
           {lastFetchedLising ? (
@@ -129,7 +128,7 @@ function Category() {
               Load More
             </p>
           ) :
-            <h3>That's all</h3>}
+            <h3 id="nothingToShow">That's all</h3>}
         </>
       ) : (
         <p>No listings for {params.categoryName}</p>
