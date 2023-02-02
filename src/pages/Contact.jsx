@@ -25,7 +25,7 @@ function Contact() {
                     setLandlord(docSnap.data());
                     setLoading(false);
                 } else {
-                    toast.warn('Could not get landlord data')
+                    toast.warn('Could not get seller data')
                 }
             } catch (error) {
                 console.log(error);
@@ -49,7 +49,7 @@ function Contact() {
         <main>
             <div className='pageContainer'>
                 <header className="pageHeader">
-                    Contact Landlord
+                    Contact Seller
                 </header>
                 <main>
                     <div className="contactLandlord">

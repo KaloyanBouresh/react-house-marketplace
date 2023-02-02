@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg'
 import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg'
-import bedIcon from '../assets/svg/bedIcon.svg'
-import bathtubIcon from '../assets/svg/bathtubIcon.svg'
+import transmissionIcon from '../assets/svg/transmissionIcon.svg'
+import distnaceIcon from '../assets/svg/distanceIcon.svg'
 
 function ListingItem({ listing, id, onDelete, onEdit }) {
     return (
         <li className="categoryListing">
             <Link to={`/category/${ listing.type }/${ id }`}
                 className="categoryListingLink">
-                <img src={listing.imgUrls[0]} alt={listing.name} className="categoryListingImg" />
+                <img src={listing.imgUrls[0]} alt={listing.name} className="categoryListingImg" title='categoryListingImg' />
 
                 <div className="categoryListingDetails">
                     <p className="categoryListingLocation">{listing.location}</p>
@@ -21,17 +21,18 @@ function ListingItem({ listing, id, onDelete, onEdit }) {
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ',') : listing.regularPrice
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                        {listing.type === 'rent' && ' / Month'}
+                        {listing.type === 'rent' && ' / Day'}
                     </p>
 
                     <div className="categoryListingInfoDiv">
-                        <img src={bedIcon} alt="bed" />
+                        <img src={distnaceIcon} alt="bed" />
                         <p className='categoryListingInfoText'>
-                            {listing.bedrooms > 1 ? `${ listing.bedrooms } Bedrooms` : '1 Bedroom'}
+                            {listing.mileage} km
                         </p>
-                        <img src={bathtubIcon} alt="bath" />
+
+                        <img src={transmissionIcon} alt="transmission" title='transmission' />
                         <p className="categoryListingInfoText">
-                            {listing.bathrooms > 1 ? `${ listing.bathrooms } Bathrooms` : '1 Bathroom'}
+                            {listing.transmission} Transmission
                         </p>
                     </div>
                 </div>

@@ -15,11 +15,10 @@ function EditListing() {
     const [listing, setListing] = useState(null);
     const [formData, setFormData] = useState({
         type: "rent",
-        name: '',
-        bedrooms: 1,
-        bathrooms: 1,
-        parking: false,
-        furnished: false,
+        name: "",
+        mileage: 0,
+        transmission: "",
+        hasInsurance: false,
         address: "",
         offer: false,
         regularPrice: 0,
@@ -32,10 +31,9 @@ function EditListing() {
     const {
         type,
         name,
-        bedrooms,
-        bathrooms,
-        parking,
-        furnished,
+        mileage,
+        transmission,
+        hasInsurance,
         address,
         offer,
         regularPrice,
@@ -283,65 +281,41 @@ function EditListing() {
 
                     <div className="formRooms flex">
                         <div>
-                            <label className="formLabel">Bedrooms</label>
+                            <label className="formLabel">km</label>
                             <input
                                 type="number"
                                 className="formInputSmall"
-                                value={bedrooms}
-                                id="bedrooms"
+                                value={mileage}
+                                id="mileage"
                                 onChange={onMutate}
                                 min="1"
-                                max="50"
+                                max="1000000"
                                 required
                             />
                         </div>
                         <div>
-                            <label className="formLabel">Bathrooms</label>
+                            <label className="formLabel">Transmission</label>
                             <input
-                                type="number"
+                                type="text"
                                 className="formInputSmall"
-                                value={bathrooms}
-                                id="bathrooms"
+                                value={transmission}
+                                id="transmission"
                                 onChange={onMutate}
-                                min="1"
-                                max="50"
+                                maxLength="20"
+                                minLength="3"
                                 required
                             />
                         </div>
                     </div>
 
-                    <label className="formLabel">Parking spot</label>
-                    <div className="formButtons">
-                        <button
-                            type="button"
-                            className={parking ? "formButtonActive" : "formButton"}
-                            id="parking"
-                            value={true}
-                            onClick={onMutate}
-                            min="1"
-                            max="50"
-                        >
-                            Yes
-                        </button>
-                        <button
-                            type="button"
-                            className={
-                                !parking && parking !== null ? "formButtonActive" : "formButton"
-                            }
-                            id="parking"
-                            value={false}
-                            onClick={onMutate}
-                        >
-                            No
-                        </button>
-                    </div>
 
-                    <label className="formLabel">Furnished</label>
+
+                    <label className="formLabel">Insurance</label>
                     <div className="formButtons">
                         <button
                             type="button"
-                            className={furnished ? "formButtonActive" : "formButton"}
-                            id="furnished"
+                            className={hasInsurance ? "formButtonActive" : "formButton"}
+                            id="hasInsurance"
                             value={true}
                             onClick={onMutate}
                             min="1"
@@ -352,7 +326,7 @@ function EditListing() {
                         <button
                             type="button"
                             className={
-                                !furnished && furnished !== null
+                                !hasInsurance && hasInsurance !== null
                                     ? "formButtonActive"
                                     : "formButton"
                             }
@@ -438,7 +412,7 @@ function EditListing() {
                             max="750000000"
                             required
                         />
-                        {type === "rent" && <p className="formPriceText">$ / Month</p>}
+                        {type === "rent" && <p className="formPriceText">$ / Day</p>}
                     </div>
 
                     {/* If offer is true */}

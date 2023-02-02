@@ -20,10 +20,9 @@ function CreateListing() {
   const [formData, setFormData] = useState({
     type: "rent",
     name: "",
-    bedrooms: 1,
-    bathrooms: 1,
-    parking: false,
-    furnished: false,
+    mileage: 0,
+    transmission: "",
+    hasInsurance: false,
     address: "",
     offer: false,
     regularPrice: 0,
@@ -36,10 +35,9 @@ function CreateListing() {
   const {
     type,
     name,
-    bedrooms,
-    bathrooms,
-    parking,
-    furnished,
+    mileage,
+    transmission,
+    hasInsurance,
     address,
     offer,
     regularPrice,
@@ -92,7 +90,7 @@ function CreateListing() {
 
     if (geolocationEnabled) {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${ address }&key=${ process.env.REACT_APP_GEOCODE_API_KEY }`
       );
 
       const data = await response.json();
@@ -120,7 +118,7 @@ function CreateListing() {
     const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
-        const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
+        const fileName = `${ auth.currentUser.uid }-${ image.name }-${ uuidv4() }`;
 
         const storageRef = ref(storage, "images/" + fileName);
 
@@ -181,7 +179,7 @@ function CreateListing() {
 
     toast.success("Listing saved! :)");
 
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+    navigate(`/category/${ formDataCopy.type }/${ docRef.id }`);
   };
 
   const onMutate = (e) => {
@@ -245,7 +243,7 @@ function CreateListing() {
             </button>
           </div>
 
-          <label className="formLabel">Name</label>
+          <label className="formLabel">Brand & Model</label>
           <input
             type="text"
             className="formInputName"
@@ -259,39 +257,39 @@ function CreateListing() {
 
           <div className="formRooms flex">
             <div>
-              <label className="formLabel">Bedrooms</label>
+              <label className="formLabel">Mileage</label>
               <input
                 type="number"
                 className="formInputSmall"
-                value={bedrooms}
-                id="bedrooms"
+                value={mileage}
+                id="mileage"
                 onChange={onMutate}
                 min="1"
-                max="50"
+                max="1000000"
                 required
               />
             </div>
             <div>
-              <label className="formLabel">Bathrooms</label>
+              <label className="formLabel">Transmission</label>
               <input
-                type="number"
+                type="text"
                 className="formInputSmall"
-                value={bathrooms}
-                id="bathrooms"
+                value={transmission}
+                id="transmission"
                 onChange={onMutate}
-                min="1"
-                max="50"
+                maxLength="20"
+                minLength="1"
                 required
               />
             </div>
           </div>
 
-          <label className="formLabel">Parking spot</label>
+          <label className="formLabel">Has Insurance</label>
           <div className="formButtons">
             <button
               type="button"
-              className={parking ? "formButtonActive" : "formButton"}
-              id="parking"
+              className={hasInsurance ? "formButtonActive" : "formButton"}
+              id="hasInsurance"
               value={true}
               onClick={onMutate}
               min="1"
@@ -302,37 +300,11 @@ function CreateListing() {
             <button
               type="button"
               className={
-                !parking && parking !== null ? "formButtonActive" : "formButton"
-              }
-              id="parking"
-              value={false}
-              onClick={onMutate}
-            >
-              No
-            </button>
-          </div>
-
-          <label className="formLabel">Furnished</label>
-          <div className="formButtons">
-            <button
-              type="button"
-              className={furnished ? "formButtonActive" : "formButton"}
-              id="furnished"
-              value={true}
-              onClick={onMutate}
-              min="1"
-              max="50"
-            >
-              Yes
-            </button>
-            <button
-              type="button"
-              className={
-                !furnished && furnished !== null
+                !hasInsurance && hasInsurance !== null
                   ? "formButtonActive"
                   : "formButton"
               }
-              id="furnished"
+              id="hasInsurance"
               value={false}
               onClick={onMutate}
             >
@@ -414,7 +386,7 @@ function CreateListing() {
               max="750000000"
               required
             />
-            {type === "rent" && <p className="formPriceText">$ / Month</p>}
+            {type === "rent" && <p className="formPriceText">$ / Day</p>}
           </div>
 
           {/* If offer is true */}
