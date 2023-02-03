@@ -9,7 +9,7 @@ html::-webkit-scrollbar {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e7e7e7;
+    background-color: #bfd6cf;
     margin: 0;
     box-sizing: border-box;
 }
@@ -148,8 +148,8 @@ button {
     left: 0;
     bottom: 0;
     right: 0;
-    height: 85px;
-    background-color: #ffffff;
+    height: 80px;
+    background-color: #a8cec0;
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -321,7 +321,7 @@ button {
 }
 
 .exploreCategoryHeading {
-    margin-top: 3rem;
+    margin-top: 1.8rem;
 }
 
 .swiper-container {
