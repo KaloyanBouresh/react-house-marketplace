@@ -100,6 +100,7 @@ function SignUp() {
                 onClick={() => {
                   setShowPassword((prevState) => !prevState)
                 }}
+                title='password-show'
               />
             </div>
             <div className="signUpBar">

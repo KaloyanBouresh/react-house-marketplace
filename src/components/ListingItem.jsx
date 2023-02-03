@@ -25,7 +25,7 @@ function ListingItem({ listing, id, onDelete, onEdit }) {
                     </p>
 
                     <div className="categoryListingInfoDiv">
-                        <img src={distnaceIcon} alt="bed" />
+                        <img src={distnaceIcon} alt="bed" title='mileage'/>
                         <p className='categoryListingInfoText'>
                             {listing.mileage} km
                         </p>

@@ -73,7 +73,7 @@ function Listing() {
       </Swiper>
 
       <div className="shareIconDiv" onClick={onShareClick}>
-        <img src={shareIcon} alt="shareIcon" />
+        <img src={shareIcon} alt="shareIcon" title="share"/>
       </div>
 
       {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
@@ -95,7 +95,7 @@ function Listing() {
           </p>
         }
 
-        <ul className="listingDetailsList">
+        <ol className="listingDetailsList">
           <li>
             {listing.mileage} km
           </li>
@@ -106,7 +106,7 @@ function Listing() {
             <li className="listingDetailsList">
               Insurance Included
             </li>}
-        </ul>
+        </ol>
         <p className="listingLocation">Location</p>
 
         <div className="leafletContainer">

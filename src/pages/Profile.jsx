@@ -130,15 +130,15 @@ function Profile() {
                 </div>
 
                 <Link to='/create-listing' className='createListing'>
-                    <img src={homeIcon} alt="home" />
+                    <img src={homeIcon} alt="home" title='home' />
                     <p>Sell or Rent your car</p>
-                    <img src={arrowRight} alt="arrow-right" />
+                    <img src={arrowRight} alt="arrow-right" title='sell/rent'/>
                 </Link>
 
                 {!loading && listings?.length > 0 && (
                     <>
                         <p className="listingText">Your listings</p>
-                        <ul className="listingsList">
+                        <ol className="listingsList">
                             {listings.map((listing) => (
                                 <ListingItem
                                     key={listing.id}
@@ -148,7 +148,7 @@ function Profile() {
                                     onEdit={() => onEdit(listing.id)}
                                 />
                             ))}
-                        </ul>
+                        </ol>
                     </>
                 )}
             </main>

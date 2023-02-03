@@ -16,7 +16,7 @@ function Navbar() {
     return (
         <footer className='navbar'>
             <nav className='navbarNav'>
-                <ul className="navbarListItems">
+                <ol className="navbarListItems">
                     <li className="navbarListItem" onClick={() => navigate('/')}>
                         <ExploreIcon fill={pathMatchRoute('/') ? "#2c2c2c" : '#8f8f8f'} width='36px' height='36px' />
                         <p className={pathMatchRoute('/') ? "navbarListItemNameActive" : 'navbarListItemName'}>Explore</p>
@@ -29,7 +29,7 @@ function Navbar() {
                         <PersonOutlineIcon fill={pathMatchRoute('/profile') ? "#2c2c2c" : '#8f8f8f'} width='36px' height='36px' />
                         <p className={pathMatchRoute('/profile') ? "navbarListItemNameActive" : 'navbarListItemName'}>Profile</p>
                     </li>
-                </ul>
+                </ol>
             </nav>
         </footer>
     )

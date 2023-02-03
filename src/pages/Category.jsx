@@ -111,7 +111,7 @@ function Category() {
       ) : listings && listings.length > 0 ? (
         <>
           <main>
-            <ul className="categoryListings">
+            <ol className="categoryListings">
               {listings.map((listing) => (
                 <ListingItem
                   listing={listing.data}
@@ -119,7 +119,7 @@ function Category() {
                   key={listing.id}
                 />
               ))}
-            </ul>
+            </ol>
           </main>
           <br />
           <br />
