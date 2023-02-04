@@ -80,18 +80,18 @@ function Listing() {
 
       <div className="listingDetails">
         <p className="listingName">{listing.name} -
-          ${listing.offer ? listing.discountedPrice
+          {listing.offer ? listing.discountedPrice
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',') : listing.regularPrice
               .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} lv
         </p>
         <p className="listingLocation">{listing.location}</p>
         <p className="listingType">For {listing.type}</p>
 
         {listing.offer &&
           <p className="discountPrice">
-            ${listing.regularPrice - listing.discountedPrice} discount
+            {listing.regularPrice - listing.discountedPrice} lv discount
           </p>
         }
 

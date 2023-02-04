@@ -599,7 +599,7 @@ button {
 }
 
 .contactLandlord {
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     align-items: center;
 }
@@ -611,10 +611,11 @@ button {
 
 .messageForm {
     margin-top: 0.5rem;
+    height: 10%;
 }
 
 .messageDiv {
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
